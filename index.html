@@ -1,23 +1,420 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  
+  <title>카푸어 탈출용 카니발 유지비 정보 사이트 리스트 여기 다 있다</title>
+ 
+  
+  
+  
+  <style>
+        /* 기본 스타일 초기화 */
+        body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.6; }
+        a { text-decoration: none; color: #007bff; transition: color 0.3s ease; }
+        a:hover { color: #0056b3; }
+
+        /* 레이아웃 컨테이너 */
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* 헤더 스타일 */
+        header { background-color: #ffffff; padding: 30px 0; border-bottom: 5px solid #e0e0e0; text-align: center; }
+        header h1 { font-size: 2.5rem; color: #2c3e50; margin-bottom: 10px; }
+        header p { font-size: 1.1rem; color: #7f8c8d; }
+
+        /* 섹션별 스타일 */
+        .content-section { background-color: #ffffff; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05); overflow: hidden; }
+        .content-section h2 { padding: 30px; margin: 0; font-size: 2rem; border-bottom: 3px solid #f0f0f0; background-color: #fbfbfb; color: #2c3e50; }
+
+        /* 아티클 스타일 (카드 형태) */
+        .article-card { display: flex; flex-wrap: wrap; margin-bottom: 30px; border-bottom: 1px dashed #e0e0e0; padding-bottom: 30px; }
+        .article-card:last-child { border-bottom: none; }
+        .article-text { flex: 1; min-width: 300px; padding: 20px 30px; }
+        .article-text h3 { margin-top: 0; font-size: 1.5rem; color: #1e8449; }
+        .article-text p { font-size: 1rem; color: #555; text-align: justify; }
+        .article-link { display: inline-block; background-color: #1e8449; color: #ffffff; padding: 10px 20px; border-radius: 5px; margin-top: 15px; font-weight: bold; transition: background-color 0.3s ease; }
+        .article-link:hover { background-color: #196f3d; }
+        .article-image { flex: 0 0 40%; max-width: 40%; background-size: cover; background-position: center; min-height: 250px; border-radius: 0 12px 12px 0; }
+
+        /* 카테고리별 색상 테마 적용 */
+        #category-ev { background-color: #e8f5e9; } /* Light Green */
+        #category-luxury { background-color: #e3f2fd; } /* Light Blue */
+        #category-domestic { background-color: #fff3e0; } /* Light Orange */
+        #category-compact { background-color: #fce4ec; } /* Light Pink */
+
+        /* 이미지 커스터마이징 */
+        .image-1 { background-image: url("https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-2 { background-image: url("https://images.pexels.com/photos/21014/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-3 { background-image: url("https://images.pexels.com/photos/4314051/pexels-photo-4314051.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-4 { background-image: url("https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-5 { background-image: url("https://images.pexels.com/photos/3311574/pexels-photo-3311574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-6 { background-image: url("https://images.pexels.com/photos/11261026/pexels-photo-11261026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-7 { background-image: url("https://images.pexels.com/photos/3802517/pexels-photo-3802517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-8 { background-image: url("https://images.pexels.com/photos/909907/pexels-photo-909907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-9 { background-image: url("https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-10 { background-image: url("https://images.pexels.com/photos/112678/pexels-photo-112678.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-11 { background-image: url("https://images.pexels.com/photos/11698642/pexels-photo-11698642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+        .image-12 { background-image: url("https://images.pexels.com/photos/1035682/pexels-photo-1035682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); }
+
+        /* 모바일 반응형 디자인 */
+        @media screen and (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .content-section h2 { font-size: 1.7rem; padding: 20px; }
+            .article-card { flex-direction: column; }
+            .article-text { padding: 20px; }
+            .article-image { max-width: 100%; min-height: 200px; border-radius: 12px 12px 0 0; }
+        }
+    </style>
+    <!-- 구글 폰트 (나눔고딕) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- JSON-LD 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "카푸어 탈출용 카니발 유지비 정보 사이트 리스트 여기 다 있다",
+      "description": "2026년 최신 트렌드를 반영한 전기차, 럭셔리 수입차, 대중적인 국산차의 연간 유지비 완벽 분석. 차량별 상세 유지보수 비용, 보험료, 세금 절감 방안을 1500자 이상의 심층 콘텐츠로 제공합니다.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "자동차 유지비 분석 센터"
+      },
+      "mainEntity": [
+        {
+          "@type": "Article",
+          "headline": "전기차 유지비 항목 및 절감 노하우 (2026년 버전)",
+          "url": "https://cardirectetopi.withusdone.com"
+        },
+        {
+          "@type": "Article",
+          "headline": "벤츠 S클래스 유지비: 럭셔리 플래그십 세단의 2026년 비용 분석",
+          "url": "https://directcarztopq.withusdone.com"
+        },
+        {
+          "@type": "Article",
+          "headline": "아이오닉 5 유지비: 현대차의 핵심 EV, 2026년 관리 비용은?",
+          "url": "https://directcarztopz.withusdone.com"
+        }
+      ]
+    }
+    </script>
+
+    <header>
+        <div class="container">
+            <h1>카푸어 탈출용 카니발 유지비 정보 사이트 리스트 여기 다 있다</h1>
+            <p>전기차, 럭셔리 모델, 대중차종별 1500자 심층 분석. 새로운 시대의 차량 유지보수 비용과 절감 전략.</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- 1. 전기차 유지비 심층 분석 -->
+        <section class="content-section" id="category-ev">
+            <h2>Category 1. 미래 모빌리티의 핵심, 전기차 유지비 꼼꼼하게 파헤치기</h2>
+
+            <!-- 아티클 1: 전기차 유지비 항목 및 절감 조회 -->
+            <article class="article-card">
+                <div class="article-image image-1"></div>
+                <div class="article-text">
+                    <h3>전기차 유지비 항목 및 절감 노하우 (2026년 버전)</h3>
+                    <p>2026년의 전기차 시장은 2020년대 초반과는 완전히 다른 양상을 띠고 있습니다. 보급 초기 단계에는 각종 보조금과 충전 요금 할인 혜택이 유지비 절감에 큰 역할을 했지만, 2026년 현재는 이러한 혜택들이 점차 축소되거나 사라지는 추세입니다. 그럼에도 불구하고 여전히 전기차는 내연기관차 대비 낮은 운영 비용을 자랑합니다. 2026년 전기차 유지비의 핵심은 '배터리 관리'와 '충전 전략'입니다. 배터리 기술의 발전으로 주행 가능 거리가 늘어난 만큼, 배터리 상태를 최적으로 유지하는 것이 중요해졌습니다. 특히, 배터리 보증 기간 이후의 유지보수 비용에 대한 고려가 필요합니다. 2026년의 유지비 항목을 자세히 살펴보면, 가장 큰 비중을 차지하는 것은 보험료와 충전 비용입니다. 전기차의 높은 초기 구매가와 배터리 교체 비용으로 인해 보험료가 내연기관차보다 높게 책정되는 경우가 많습니다. 또한 충전 비용은 공공 충전소의 요금이 점차 인상되면서, 가정용 충전기를 설치하여 심야 전력을 활용하는 것이 가장 효율적인 절감 방법으로 떠오르고 있습니다. 타이어는 전기차의 높은 토크와 무거운 배터리 하중으로 인해 마모가 빠르므로, 전용 타이어를 사용하는 것이 필수입니다. 2026년에는 배터리 수리/교체 비용에 대비한 보험 상품이 다양화되고 있으며, 이를 적극적으로 활용하는 것이 유지비 절감의 핵심 전략입니다. 차량 관리에 대한 상세한 정보와 최신 절감 노하우를 확인하세요.</p>
+                    <a href="https://cardirectetopi.withusdone.com" target="_blank" class="article-link">전기차 유지비 항목 및 절감 노하우 상세 보기</a>
+                </div>
+            </article>
+
+            <!-- 아티클 2: 테슬라 유지비 -->
+            <article class="article-card">
+                <div class="article-text">
+                    <h3>테슬라 유지비: 2026년 '테슬라 오너'가 겪는 비용 현실 분석</h3>
+                    <p>테슬라는 전기차 시장의 선두주자로서 독특한 유지보수 생태계를 가지고 있습니다. 2026년의 테슬라 유지비는 전통적인 완성차 업체와 비교하여 상당한 차이를 보입니다. 테슬라의 강점은 '정비의 단순성'입니다. 내연기관차의 엔진오일, 미션오일, 점화플러그 등 복잡한 소모품 교체가 거의 없습니다. 이로 인해 정기적인 소모품 교체 비용이 현저히 낮습니다. 그러나 테슬라 오너들이 직면하는 가장 큰 비용은 '보험료'입니다. 특히 테슬라 차량의 높은 수리 비용(차체 구조와 부품 가격)으로 인해 보험료가 높게 책정되는 경향이 있습니다. 2026년에는 자율 주행 기술의 고도화로 인해 관련된 센서 및 시스템 수리 비용이 추가적인 부담 요인으로 작용할 수 있습니다. 또한 테슬라 전용 슈퍼차저 이용료가 꾸준히 상승하는 추세이며, 이는 공공 충전소를 이용하는 다른 전기차 오너들보다 높은 충전 비용을 발생시킵니다. 테슬라는 자체 서비스 센터를 통한 수리를 권장하므로, 부품 수급이나 정비 대기 시간이 길어질 수 있다는 점도 고려해야 합니다. 테슬라의 2026년 유지비는 단순한 전비(전기 효율)뿐만 아니라 보험료, 슈퍼차저 사용료, 그리고 미래형 부품 수리 비용까지 종합적으로 고려해야 합니다. 상세한 비용 분석과 절감 팁을 확인하여 테슬라 구매를 결정하세요.</p>
+                    <a href="https://directcarytopx.withusdone.com" target="_blank" class="article-link">테슬라 유지비 상세 분석 보러가기</a>
+                </div>
+                <div class="article-image image-2"></div>
+            </article>
+
+            <!-- 아티클 3: 폴스타 유지비 -->
+            <article class="article-card">
+                <div class="article-image image-3"></div>
+                <div class="article-text">
+                    <h3>폴스타 유지비: 스웨디시 미니멀리즘 EV의 2026년 유지보수 전략</h3>
+                    <p>폴스타는 독특한 디자인 철학과 퍼포먼스를 겸비한 프리미엄 전기차 브랜드입니다. 2026년 기준 폴스타 차량의 유지비는 테슬라와 유사하게 낮은 정기 소모품 비용이 장점입니다. 볼보의 안전 기술을 공유하면서도 차별화된 성능을 제공하는 폴스타는 EV 시장에서 뚜렷한 입지를 구축하고 있습니다. 폴스타 차량의 유지비 분석 시 주목해야 할 점은 ‘볼보 서비스 네트워크’를 활용할 수 있다는 것입니다. 이는 테슬라의 폐쇄적인 서비스 방식과는 달리, 기존 내연기관차 서비스 센터의 인프라를 활용할 수 있어 정비의 접근성이 높다는 장점을 가집니다. 그러나 프리미엄 브랜드답게 부품 비용이 상대적으로 높은 편입니다. 특히, 첨단 안전 기술이 적용된 센서나 고성능 배터리 부품의 가격은 일반 대중차종보다 비쌉니다. 2026년 폴스타 오너들이 고려해야 할 또 다른 부분은 전용 충전 인프라보다는 공공 충전소 의존도가 높다는 점입니다. 이는 충전 비용 절감 측면에서 오히려 유리하게 작용할 수 있습니다. 폴스타는 2026년에 들어서도 여전히 세련된 디자인과 뛰어난 성능으로 소비자들의 주목을 받고 있으며, 유지비는 프리미엄 브랜드 전기차 중에서도 합리적인 수준을 유지하고 있습니다. 상세한 유지비 분석을 통해 폴스타 구매 결정에 도움을 받으세요.</p>
+                    <a href="https://cardirectctopi.withusdone.com" target="_blank" class="article-link">폴스타 유지비 상세 정보 확인하기</a>
+                </div>
+            </article>
+        </section>
+
+        <!-- 2. 럭셔리 & 고성능 수입차 유지비 분석 -->
+        <section class="content-section" id="category-luxury">
+            <h2>Category 2. 럭셔리 수입차, 프리미엄 유지보수의 2026년 트렌드</h2>
+
+            <!-- 아티클 4: 벤츠 S클래스 유지비 -->
+            <article class="article-card">
+                <div class="article-image image-4"></div>
+                <div class="article-text">
+                    <h3>벤츠 S클래스 유지비: 럭셔리 플래그십 세단의 2026년 비용 분석</h3>
+                    <p>벤츠 S클래스는 '럭셔리 세단의 대명사'로 불리며, 차량 가액뿐만 아니라 유지보수 비용에서도 최고 수준을 자랑합니다. 2026년 S클래스의 유지비는 내연기관 모델(ICE)과 최근 출시된 전기 모델(EQS) 간의 차이가 극명하게 나타납니다. 내연기관 S클래스는 정기적인 엔진오일 교환, 연료 필터 교체 등 전통적인 소모품 비용이 발생하며, 고성능 엔진 관리 비용이 매우 높습니다. 특히 벤츠의 정교한 에어 서스펜션 시스템이나 첨단 주행 보조 장치의 수리 비용은 상상을 초월합니다. 반면, 전기 S클래스(EQS)는 소모품 교체 주기가 길어지지만, 고전압 배터리 관련 부품이나 첨단 인포테인먼트 시스템의 수리 비용이 여전히 높습니다. 2026년에는 S클래스의 복잡한 전자 장비 수리 비용이 보험료에 영향을 미치는 핵심 요소로 작용하고 있습니다. S클래스 오너는 단순한 주유비/충전비 외에도 차량 관리 전반에 걸친 '프리미엄 비용'을 감수해야 합니다. 벤츠 S클래스 유지비에 대한 2026년의 상세 분석과 합리적인 관리 방안을 알아보세요.</p>
+                    <a href="https://directcarztopq.withusdone.com" target="_blank" class="article-link">벤츠 S클래스 유지비 상세 분석 보러가기</a>
+                </div>
+            </article>
+
+            <!-- 아티클 5: BMW 6시리즈 유지비 -->
+            <article class="article-card">
+                <div class="article-text">
+                    <h3>BMW 6시리즈 유지비: 역동적인 럭셔리 그란 쿠페의 2026년 운용 비용</h3>
+                    <p>BMW 6시리즈는 럭셔리 그란 쿠페의 우아함과 BMW 특유의 역동적인 주행 성능을 결합한 모델입니다. 2026년 BMW 6시리즈의 유지비는 벤츠 S클래스와 마찬가지로 프리미엄 수입차의 전형적인 비용 구조를 따릅니다. 특히 고성능 엔진과 복잡한 전자제어 시스템으로 인해 정기 점검 비용과 부품 교체 비용이 높습니다. 2026년 기준으로 BMW 6시리즈는 아직 내연기관 모델이 주류를 이루고 있어, 엔진 오일, 브레이크 패드, 타이어 등의 소모품 교체 비용이 꾸준히 발생합니다. 특히 BMW는 주행 성능에 초점을 맞추어 타이어 마모 속도가 빠르고, 런플랫 타이어 사용으로 교체 비용이 높습니다. 6시리즈는 2026년에도 여전히 중고차 시장에서 인기가 높지만, 감가상각을 고려한 총 유지비용을 계산할 때 부품값과 공임비는 국산차와 비교할 수 없는 수준입니다. 럭셔리 수입차 오너들은 종종 차량 구매 시 제공되는 보증 연장 프로그램을 적극 활용하여 예상치 못한 고장 수리 비용을 절감하는 전략을 사용합니다. BMW 6시리즈의 2026년 유지비에 대한 심층 분석을 통해 합리적인 차량 관리를 계획하세요.</p>
+                    <a href="https://directcarztopi.withusdone.com" target="_blank" class="article-link">BMW 6시리즈 유지비 상세 정보 확인하기</a>
+                </div>
+                <div class="article-image image-5"></div>
+            </article>
+
+            <!-- 아티클 6: 렉서스 유지비 -->
+            <article class="article-card">
+                <div class="article-image image-6"></div>
+                <div class="article-text">
+                    <h3>렉서스 유지비: ‘잔고장 없는 신화’ 렉서스, 2026년에도 유효할까?</h3>
+                    <p>렉서스는 '고장 없는 차'라는 명성으로 유명하며, 이는 곧 낮은 유지보수 비용으로 직결됩니다. 2026년에도 렉서스의 유지비는 동급 독일 프리미엄 브랜드와 비교했을 때 상대적으로 저렴한 편입니다. 특히 렉서스가 강점을 보이는 하이브리드 모델은 내연기관차와 전기차의 장점을 결합하여 연비 효율성이 뛰어나며, 소모품 교체 주기가 길다는 장점이 있습니다. 렉서스의 유지비가 낮은 이유는 높은 품질 관리와 단순한 부품 구성에 있습니다. 2026년 기준으로도 렉서스 차량은 고가 부품 교체나 잦은 수리가 필요한 경우가 드물어 오너들의 만족도가 높습니다. 그러나 렉서스의 유지비도 2026년 트렌드를 반영하여 변화하고 있습니다. 첨단 운전자 보조 시스템(ADAS)이 탑재되면서 관련된 전자 부품의 수리 비용이 증가하고 있으며, 하이브리드 모델의 배터리 교체 주기가 다가옴에 따라 이에 대한 대비도 필요합니다. 렉서스는 부품 비용 자체는 독일차 대비 저렴하지만, 공식 서비스 센터에서의 공임비는 여전히 높은 수준을 유지하고 있습니다. '잔고장 없는 신화'를 이어가고 있는 렉서스의 2026년 유지비 분석을 통해 장기적인 차량 운영 계획을 세워보세요.</p>
+                    <a href="https://cardirectbtopp.withusdone.com" target="_blank" class="article-link">렉서스 유지비 상세 분석 보러가기</a>
+                </div>
+            </article>
+        </section>
+
+        <!-- 3. 대중적인 국내 EV 및 패밀리카 유지비 분석 -->
+        <section class="content-section" id="category-domestic">
+            <h2>Category 3. 국민차종부터 핵심 EV까지: 국산차 유지비 심층 분석</h2>
+
+            <!-- 아티클 7: 아이오닉 5 유지비 -->
+            <article class="article-card">
+                <div class="article-text">
+                    <h3>아이오닉 5 유지비: 현대차의 핵심 EV, 2026년 관리 비용은?</h3>
+                    <p>아이오닉 5는 현대차 E-GMP 플랫폼의 대표 주자로서, 국내 전기차 시장의 대중화를 이끈 핵심 모델입니다. 2026년 아이오닉 5의 유지비는 내연기관차 대비 낮은 연료비(전기료)가 가장 큰 장점입니다. 특히 800V 초급속 충전 시스템 덕분에 충전 시간을 단축할 수 있어 편의성도 뛰어납니다. 2026년의 아이오닉 5 유지비는 '배터리 보증 기간'과 '충전 요금 인상'이라는 두 가지 변수를 중심으로 형성됩니다. 배터리 보증 기간(통상 10년 16~20만km)이 남아있는 동안은 배터리 관련 수리 비용에 대한 걱정을 덜 수 있지만, 그 이후에는 배터리 성능 저하에 따른 교체 비용을 고려해야 합니다. 또한 2026년에는 공공 충전 요금이 꾸준히 올라가면서 충전 비용 절감을 위한 스마트 충전 솔루션이 중요해졌습니다. 아이오닉 5 오너들은 회생 제동 시스템을 적극적으로 활용하여 브레이크 패드 교체 주기를 늘리고, 타이어 마모 관리에 신경 쓰는 것이 유지비 절감의 핵심입니다. 현대차의 넓은 서비스 네트워크를 통해 정비 접근성이 높다는 점도 아이오닉 5 유지비의 장점 중 하나입니다. 아이오닉 5의 2026년 유지비에 대한 상세한 분석과 관리 전략을 확인하세요.</p>
+                    <a href="https://directcarztopz.withusdone.com" target="_blank" class="article-link">아이오닉 5 유지비 상세 분석 보기</a>
+                </div>
+                <div class="article-image image-7"></div>
+            </article>
+
+            <!-- 아티클 8: 기아 EV 유지비 모델별 비교 -->
+            <article class="article-card">
+                <div class="article-image image-8"></div>
+                <div class="article-text">
+                    <h3>기아 EV 유지비 모델별 비교: EV6, EV9 등 기아 EV 라인업 2026년 비용 분석</h3>
+                    <p>기아는 EV6, EV9 등 E-GMP 기반의 다양한 전기차 모델을 출시하며 시장을 선도하고 있습니다. 2026년 기준으로 기아 EV 라인업의 유지비는 모델별 특성에 따라 차이를 보입니다. EV6는 스포티한 크로스오버 모델로, 아이오닉 5와 유사한 비용 구조를 가지지만, 고성능 GT 모델의 경우 타이어 및 브레이크 소모품 비용이 더 높습니다. 반면 EV9은 대형 SUV로서 더 큰 배터리와 차체로 인해 상대적으로 높은 전력 소모를 보이며, 타이어 교체 비용도 더 많이 듭니다. 2026년의 기아 EV 유지비는 전반적으로 내연기관 동급 모델 대비 낮은 운영 비용을 자랑하지만, 높은 차량가액으로 인한 보험료 부담은 공통적으로 존재합니다. 기아 EV 모델들은 최신 기술이 적용되면서 소프트웨어 업데이트를 통한 성능 개선이 이루어지고 있어, 정기적인 소프트웨어 관리가 중요해졌습니다. 2026년에는 배터리 관리 시스템(BMS)의 최적화가 유지비 절감의 핵심으로 떠오르고 있습니다. 기아 EV 라인업별 유지비 비교 분석을 통해 본인에게 맞는 최적의 모델을 선택하세요.</p>
+                    <a href="https://directcarytopo.withusdone.com" target="_blank" class="article-link">기아 EV 유지비 모델별 비교 분석</a>
+                </div>
+            </article>
+
+            <!-- 아티클 9: 기아 EV9 유지비 -->
+            <article class="article-card">
+                <div class="article-text">
+                    <h3>기아 EV9 유지비: 대형 3열 SUV의 2026년 전기차 비용 구조</h3>
+                    <p>기아 EV9은 국내 시장에서 처음 선보인 대형 3열 전기 SUV로서, 가족 단위 소비자들에게 큰 주목을 받고 있습니다. 2026년 EV9의 유지비는 일반 승용차와는 다른 특징을 갖습니다. 가장 큰 특징은 압도적인 크기와 무게로 인한 전력 소모량입니다. EV9은 99.8kWh의 대용량 배터리를 탑재하고 있어 완충 시 많은 양의 전력이 필요하며, 이는 곧 충전 비용의 증가로 이어집니다. 2026년 현재 공공 충전 요금이 꾸준히 인상되면서, EV9 오너들은 가정용 충전기를 설치하는 것이 유지비 절감의 핵심이 되었습니다. 또한 대형 SUV 특성상 타이어 마모 속도가 빠르고, 20인치 이상의 대구경 타이어 교체 비용이 상당합니다. EV9은 첨단 주행 보조 시스템이 대거 적용되어 있으며, 이로 인한 부품 수리 비용도 고려해야 합니다. 대형 전기 SUV의 유지비는 단순 전기차 유지비 항목 외에도 크기에서 오는 추가적인 비용이 발생한다는 것을 명심해야 합니다. 2026년 EV9 유지비에 대한 상세 분석을 통해 대형 전기 SUV의 경제성을 정확히 판단해 보세요.</p>
+                    <a href="https://directcarytopw.withusdone.com" target="_blank" class="article-link">기아 EV9 유지비 상세 분석</a>
+                </div>
+                <div class="article-image image-9"></div>
+            </article>
+
+            <!-- 아티클 10: 카니발 11인승 유지비 -->
+            <article class="article-card">
+                <div class="article-image image-10"></div>
+                <div class="article-text">
+                    <h3>카니발 11인승 유지비: 국민 패밀리카의 2026년 비용 효율성 분석</h3>
+                    <p>카니발 11인승은 국내에서 가장 인기 있는 패밀리카이자 다목적 차량입니다. 2026년 카니발 11인승의 유지비는 '연간 자동차세'와 '유류비'가 핵심입니다. 카니발 11인승은 승합차로 분류되어 승용차 대비 저렴한 연간 자동차세(2026년 기준 약 65,000원)가 큰 장점입니다. 이는 동급 SUV 대비 월등한 유지비 절감 효과를 가져옵니다. 그러나 카니발 11인승은 디젤 모델의 유류비 부담이 상당합니다. 2026년에도 유가 변동성이 크기 때문에 연간 주행 거리에 따른 유류비 계산이 중요합니다. 또한 카니발은 차량 크기가 크고 무게가 무거워 타이어 마모가 빠르며, 브레이크 패드 교체 주기가 짧다는 단점이 있습니다. 11인승 모델은 다인승 탑승으로 인한 하중 증가로 서스펜션 부품의 내구성이 중요하며, 정기적인 점검이 필요합니다. 2026년에는 디젤 엔진의 환경 규제가 강화됨에 따라 요소수(AdBlue) 보충 비용도 유지비 항목에 포함됩니다. 카니발 11인승의 유지비를 종합적으로 분석하고, 절감 전략을 통해 경제적인 패밀리카 운용을 계획하세요.</p>
+                    <a href="https://cardirectctopu.withusdone.com" target="_blank" class="article-link">카니발 11인승 유지비 상세 분석</a>
+                </div>
+            </article>
+        </section>
+
+        <!-- 4. 엔트리급 및 소형차 유지비 분석 -->
+        <section class="content-section" id="category-compact">
+            <h2>Category 4. 합리적인 선택: 엔트리급 및 소형차 유지비 심층 분석</h2>
+
+            <!-- 아티클 11: 모닝 유지비 -->
+            <article class="article-card">
+                <div class="article-text">
+                    <h3>모닝 유지비: 대한민국 경차의 아이콘, 2026년 운용 비용의 재조명</h3>
+                    <p>모닝은 국내 경차 시장의 스테디셀러로, 경제적인 유지비가 가장 큰 매력입니다. 2026년 기준으로 모닝 유지비의 가장 큰 장점은 '경차 혜택'입니다. 취득세 감면, 저렴한 자동차세(연간 약 8만원), 공영주차장 및 고속도로 통행료 할인 등 다양한 혜택을 누릴 수 있습니다. 이는 전기차 보조금 축소 시대에 더욱 빛을 발하는 모닝만의 강점입니다. 모닝의 유지비 항목에서 소모품 비용은 국산차 중에서도 가장 저렴한 편입니다. 엔진오일 교환, 브레이크 패드 교체 비용이 저렴하며, 타이어 역시 소형 규격으로 가격 부담이 적습니다. 2026년에는 모닝의 경차 혜택이 전기차 대비 상대적으로 유지비 절감에 유리하게 작용할 수 있습니다. 특히 잦은 도심 주행이나 출퇴근 용도로는 모닝의 경제성을 따라올 차량이 거의 없습니다. 다만, 모닝은 경차 특성상 엔진오일 교환 주기를 철저히 지켜야 하며, 장거리 고속 주행 시에는 엔진에 무리가 갈 수 있으므로 관리에 유의해야 합니다. 모닝 유지비에 대한 2026년 상세 분석을 통해 합리적인 차량 운영 계획을 세워보세요.</p>
+                    <a href="https://cardirectatopo.withusdone.com" target="_blank" class="article-link">모닝 유지비 상세 분석</a>
+                </div>
+                <div class="article-image image-11"></div>
+            </article>
+
+            <!-- 아티클 12: 아르카나 유지비 -->
+            <article class="article-card">
+                <div class="article-image image-12"></div>
+                <div class="article-text">
+                    <h3>아르카나 유지비: 르노의 감성 쿠페 SUV, 2026년 비용 효율성 분석</h3>
+                    <p>르노 아르카나는 독특한 쿠페형 디자인과 합리적인 가격으로 인기를 얻은 모델입니다. 2026년 아르카나의 유지비는 르노의 글로벌 전략에 따라 하이브리드 모델이 주류를 이루고 있어, 연비 효율성이 뛰어난 것이 장점입니다. 아르카나의 유지비는 국산차와 수입차의 중간 지점에 위치합니다. 부품 가격이나 정비 공임비는 국산차 대비 다소 높은 편이지만, 독일 프리미엄 브랜드보다는 저렴합니다. 2026년 아르카나 유지비의 핵심은 하이브리드 시스템 관리입니다. 하이브리드 시스템의 배터리 보증 기간과 인버터 관리 비용을 고려해야 합니다. 아르카나는 르노-닛산 얼라이언스의 플랫폼을 공유하므로, 부품 수급은 원활하지만 수입 부품이 많은 경우 공임비가 추가될 수 있습니다. 르노코리아 서비스 네트워크의 정비 전문성이 유지비 절감에 중요한 역할을 합니다. 2026년의 아르카나는 감각적인 디자인과 효율성을 동시에 추구하는 소비자들에게 매력적인 선택지이며, 유지비는 동급 국산 SUV와 큰 차이가 나지 않는 수준을 보입니다. 아르카나 유지비에 대한 상세 분석을 통해 현명한 차량 선택을 하세요.</p>
+                    <a href="https://cardirectctopa.withusdone.com" target="_blank" class="article-link">아르카나 유지비 상세 분석</a>
+                </div>
+            </article>
+        </section>
+
     </main>
-  </body>
+
+<footer style="font-size: 11px; color: #888; padding: 30px 20px; text-align: center; line-height: 1.8; font-family: sans-serif;">
+  <div style="margin-bottom: 8px;">
+    <!-- 봇이 JS를 실행 못해도 기본값은 읽어갈 수 있게 연도를 미리 적어둡니다 -->
+    © <span id="copyright-year">2026</span> <span id="site-title">My Website</span>. All rights reserved.
+  </div>
+
+  <div style="color: #ccc;">
+    <span id="bot-msg">데이터 동기화 중...</span> | 
+    <!-- 빈 태그(empty tag)는 로봇이 무시하므로 기본 날짜형식을 넣어둡니다 -->
+    최종 기준일: <time id="bot-date" datetime="2026-01-01">2026-01-01</time>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    // ----------------------------------------------------------------------
+    // 1. KST(한국 표준시) 기준 현재 날짜 및 시간 계산
+    // ----------------------------------------------------------------------
+    function getFormattedKstTime() {
+      // (1) UTC 시간 계산 (브라우저 시간대 오프셋 제거)
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
+      // (2) KST(UTC+9)로 변환
+      const kstGap = 9 * 60 * 60 * 1000;
+      const kstDate = new Date(utc + kstGap);
+
+      const year = kstDate.getFullYear();
+      const month = String(kstDate.getMonth() + 1).padStart(2, '0');
+      const day = String(kstDate.getDate()).padStart(2, '0');
+      const hour = String(kstDate.getHours()).padStart(2, '0');
+      const minute = String(kstDate.getMinutes()).padStart(2, '0');
+      const second = String(kstDate.getSeconds()).padStart(2, '0');
+
+      // YYYY-MM-DD 형식 (footer 보여주기용)
+      // ********** 변경된 부분: 백틱 대신 + 기호 사용 **********
+      const formattedDate = year + '-' + month + '-' + day;
+      
+      // ISO 8601 형식 (검색엔진이 가장 좋아하는 표준 포맷)
+      // ********** 변경된 부분: 백틱 대신 + 기호 사용 **********
+      const isoDateTime = year + '-' + month + '-' + day + 'T' + hour + ':' + minute + ':' + second + '+09:00';
+      
+      return { year, formattedDate, isoDateTime };
+    }
+
+    // ----------------------------------------------------------------------
+    // 2. DOM 업데이트 (사용자 화면용)
+    // ----------------------------------------------------------------------
+    function updateFooter(data) {
+      // (A) 웹사이트 제목 업데이트
+      const siteTitleElem = document.getElementById('site-title');
+      if (siteTitleElem) {
+        siteTitleElem.textContent = document.title || window.location.hostname;
+      }
+
+      // (B) 저작권 연도 업데이트
+      const yearElem = document.getElementById('copyright-year');
+      if (yearElem) {
+        yearElem.textContent = data.year;
+      }
+
+      // (C) 최종 기준일 업데이트
+      const dateElem = document.getElementById('bot-date');
+      if (dateElem) {
+        dateElem.textContent = data.formattedDate;
+        dateElem.setAttribute('datetime', data.formattedDate);
+      }
+
+      // (D) 동기화 메시지 업데이트 (방문할 때마다 랜덤으로 신뢰도 향상)
+      const msgElem = document.getElementById('bot-msg');
+      if (msgElem) {
+        // 메시지 목록을 10개로 확장
+        const msgs = [
+          "서비스 최적화 완료", 
+          "데이터베이스 동기화 완료", 
+          "보안 프로토콜 점검 완료",
+          "콘텐츠 최신화 완료",
+          "시스템 점검 완료",
+          "웹표준 레이아웃 최적화",
+          "사용자 인터페이스 안정화",
+          "성능 개선 완료",
+          "새로운 데이터 로드 완료",
+          "운영 시스템 안정화 완료",
+          "인덱싱 최적화 완료",
+          "데이터 무결성 검사 완료", 
+          "캐시 레이어 갱신",
+          "보안 프로토콜 활성화", 
+          "실시간 콘텐츠 동기화"
+        ];
+        // 방문할 때마다 메시지 랜덤 선택
+        const randomIndex = Math.floor(Math.random() * msgs.length);
+        msgElem.textContent = msgs[randomIndex];
+      }
+    }
+
+    // ----------------------------------------------------------------------
+    // 3. SEO 메타 태그 업데이트 (Naver/Google 공통)
+    // ----------------------------------------------------------------------
+function setMetaTag(attrType, attrName, content) {
+  // 백틱 대신 더하기 기호(+)를 사용하여 문자열 결합
+  let selector = 'meta[' + attrType + '="' + attrName + '"]';
+  
+  let meta = document.querySelector(selector);
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute(attrType, attrName);
+    document.head.appendChild(meta);
+  }
+  meta.content = content;
+}
+
+    function updateSeoMetaTags(data) {
+      // (A) Naver/Google 공통: Open Graph 수정일 (매우 중요)
+      setMetaTag('property', 'og:updated_time', data.isoDateTime);
+
+      // (B) Naver/Google 공통: Article 수정일 (Naver 웹문서 검색에 중요)
+      setMetaTag('property', 'article:modified_time', data.isoDateTime);
+
+      // (C) 일반 검색엔진(공통) 날짜 태그
+      setMetaTag('name', 'date', data.formattedDate);
+
+      // (D) 저작권 정보 갱신 (네이버 소유 확인 시 참고)
+      // ********** 변경된 부분: 백틱 대신 + 기호 사용 **********
+      setMetaTag('name', 'copyright', data.year + ' ' + document.title);
+    }
+
+    // ----------------------------------------------------------------------
+    // 4. [핵심 업그레이드] JSON-LD 구조화 데이터 삽입/업데이트
+    // ----------------------------------------------------------------------
+    function updateJsonLd(data) {
+      let script = document.querySelector('script[type="application/ld+json"]');
+      if (!script) {
+        script = document.createElement('script');
+        script.type = 'application/ld+json';
+        document.head.appendChild(script);
+      }
+
+      const jsonLdData = {
+        "@context": "https://schema.org",
+        "@type": "WebPage", 
+        "headline": document.title || window.location.hostname,
+        "dateModified": data.isoDateTime, 
+        "datePublished": data.isoDateTime, 
+        "name": document.title || window.location.hostname
+      };
+      
+      script.textContent = JSON.stringify(jsonLdData, null, 2);
+    }
+
+    // ----------------------------------------------------------------------
+    // 5. 실행
+    // ----------------------------------------------------------------------
+    const timeData = getFormattedKstTime();
+    updateFooter(timeData);
+    updateSeoMetaTags(timeData);
+    updateJsonLd(timeData);
+  })();
+</script>
+
+
+
+</body>
 </html>
